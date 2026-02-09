@@ -66,13 +66,13 @@ async def main():
                 })
 
         # Generate Ultra-Lightweight HTML (< 5KB target)
-        # Minified CSS, no external deps.
-        html = f"""<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><title>Anti-Graffiti Ranking</title><style>body{{font-family:sans-serif;max-width:600px;margin:10px auto;font-size:14px}}h1{{font-size:16px;border-bottom:1px solid #333;padding-bottom:5px;margin-bottom:10px}}ul{{padding:0;list-style:none}}li{{padding:4px 0;border-bottom:1px solid #eee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}a{{text-decoration:none;color:#000}}a:hover{{text-decoration:underline;color:blue}}.t{{font-size:10px;color:#999;text-align:right;margin-top:10px}}</style></head><body><h1>Anti-Graffiti Ranking</h1><ul>"""
+        # Minified CSS, no external deps. Teal Theme: #0f766e
+        html = f"""<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><title>인터넷가이드 사은품 파워 랭킹</title><style>body{{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;max-width:600px;margin:20px auto;font-size:14px;color:#333}}h1{{font-size:18px;color:#0f766e;border-bottom:2px solid #0f766e;padding-bottom:10px;margin-bottom:15px;text-align:center}}ul{{padding:0;list-style:none}}li{{padding:8px 12px;border-bottom:1px solid #eee;display:flex;align-items:center}}li:last-child{{border-bottom:none}}.r{{background:#0f766e;color:#fff;width:20px;height:20px;border-radius:4px;text-align:center;line-height:20px;font-size:12px;font-weight:bold;margin-right:10px;flex-shrink:0}}a{{text-decoration:none;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-grow:1}}a:hover{{color:#0f766e;font-weight:bold}}.t{{font-size:11px;color:#888;text-align:center;margin-top:20px;background:#f9f9f9;padding:10px;border-radius:8px}}</style></head><body><h1>인터넷가이드 사은품 파워 랭킹</h1><ul>"""
         
         for i, item in enumerate(top_items):
-            html += f'<li><b>{i+1}.</b> <a href="{item["link"]}" target="_blank">{item["title"]}</a></li>'
+            html += f'<li><span class="r">{i+1}</span><a href="{item["link"]}" target="_blank">{item["title"]}</a></li>'
             
-        html += f"""</ul><div class="t">{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</div></body></html>"""
+        html += f"""</ul><div class="t">Updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</div></body></html>"""
 
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             f.write(html)
